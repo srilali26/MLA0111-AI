@@ -1,0 +1,9 @@
+% Base case: sum of integers from 1 to 1 is 1
+sum_up_to_n(1, 1).
+
+% Recursive case: sum of integers from 1 to n is Sum, where Sum is the sum of integers from 1 to n-1 plus n
+sum_up_to_n(N, Sum) :-
+    N > 1,                      % Ensure N is greater than 1
+    N1 is N - 1,                % Decrement N by 1
+    sum_up_to_n(N1, Sum1),     % Recursively compute the sum of integers from 1 to n-1
+    Sum is Sum1 + N.            % Calculate the sum of integers from 1 to n
