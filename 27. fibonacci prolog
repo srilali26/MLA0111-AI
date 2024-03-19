@@ -11,4 +11,4 @@ fibonacci(N, Result) :-
     fibonacci(N2, Result2),
     Result is Result1 + Result2.
 Query:
-factorial(5, Result).
+fibonacci(6, Result).
