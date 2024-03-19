@@ -14,3 +14,5 @@ canget(state(,,_,has)).
 canget(State1) :-
    move(State1,_,State2),
    canget(State2).
+Query:
+ move(state(middle, onfloor, middle, hasnot), Move, NextState).
