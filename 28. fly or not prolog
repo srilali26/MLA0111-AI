@@ -1,0 +1,10 @@
+% Facts about birds and their flying abilities
+can_fly(sparrow).
+can_fly(eagle).
+can_fly(crow).
+
+% Queries to determine if specific birds can fly
+?- can_fly(sparrow).
+?- can_fly(penguin).
+?- can_fly(eagle).
+?- can_fly(crow).
