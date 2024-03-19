@@ -1,0 +1,36 @@
+% Facts: individuals with their names and DOBs
+individual('John', date(1990, 5, 15)).
+individual('Alice', date(1985, 9, 20)).
+individual('Michael', date(1978, 3, 10)).
+individual('Emma', date(1995, 11, 3)).
+individual('David', date(1980, 7, 25)).
+
+% Query to retrieve the DOB of a specific person given their name
+dob_of(Name, DOB) :-
+    individual(Name, DOB).
+
+% Query to find all individuals who are older than a certain age
+older_than_age(Age, Name, DOB) :-
+    individual(Name, DOB),
+    date_of_birth_older_than(DOB, Age).
+
+% Helper rule to check if a date of birth is older than a certain age
+date_of_birth_older_than(date(Year, _, _), Age) :-
+    get_time(Timestamp),
+    stamp_date_time(Timestamp, CurrentTime, 'UTC'),
+    date_time_value(year, CurrentTime, CurrentYear),
+    BirthYear is CurrentYear - Age,
+    Year < BirthYear.
+
+% Query to determine who is the youngest person in the database
+youngest_person(Name, DOB) :-
+    setof(DateOfBirth-Person, individual(Person, DateOfBirth), [DOB-Name|_]).
+
+% Query to check if a specific person is older than another specific person
+older_than(Person1, Person2) :-
+    individual(Person1, DOB1),
+    individual(Person2, DOB2),
+    DOB1 @> DOB2.
+
+    Query:
+    dob_of('John', DOB).
