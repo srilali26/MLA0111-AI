@@ -1,0 +1,15 @@
+% Facts about diseases and their corresponding dietary recommendations
+diet_recommendation(diabetes, 'Limit intake of carbohydrates and sugars. Focus on low glycemic index foods such as vegetables, fruits, whole grains, and lean proteins. Avoid sugary drinks and high-carb snacks.').
+
+diet_recommendation(hypertension, 'Reduce sodium intake by avoiding processed foods, canned soups, and salty snacks. Eat more fruits, vegetables, whole grains, and lean proteins. Limit alcohol consumption and caffeine intake. Monitor portion sizes to control calorie intake.').
+
+diet_recommendation(obesity, 'Focus on portion control and calorie restriction. Eat a balanced diet with plenty of fruits, vegetables, whole grains, and lean proteins. Limit intake of high-calorie and high-fat foods. Increase physical activity levels to promote weight loss.').
+
+% Query to suggest a dieting system based on a specific disease
+suggest_diet(Disease, Recommendation) :-
+    diet_recommendation(Disease, Recommendation).
+
+% Example queries:
+% ?- suggest_diet(diabetes, Recommendation).
+% ?- suggest_diet(hypertension, Recommendation).
+% ?- suggest_diet(obesity, Recommendation).
