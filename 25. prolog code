@@ -1,0 +1,44 @@
+% Knowledge Base: Facts about students, teachers, subjects, and codes
+student(john, math).
+student(alice, english).
+student(michael, history).
+
+teacher(ms_smith, math).
+teacher(mr_jones, english).
+teacher(mr_brown, history).
+
+subject(math, calculus).
+subject(english, literature).
+subject(history, world_war_ii).
+
+code(math, m101).
+code(english, e202).
+code(history, h303).
+
+% Predicate to generate a fill-in-the-blank question
+generate_question(Question) :-
+    random_student(Student),
+    random_subject(Subject),
+    random_code(Code),
+    format(atom(Question), 'What is the code for the ~w class taught by a student named ~w?', [Subject, Student, Code]).
+
+% Predicate to randomly select a student
+random_student(Student) :-
+    findall(S, student(S, _), Students),
+    random_member(Student, Students).
+
+% Predicate to randomly select a subject
+random_subject(Subject) :-
+    findall(Sub, subject(_, Sub), Subjects),
+    random_member(Subject, Subjects).
+
+% Predicate to randomly select a code
+random_code(Code) :-
+    findall(C, code(_, C), Codes),
+    random_member(Code, Codes).
+
+% Sample query to generate a question
+% ?- generate_question(Question).
+
+Query:
+generate_question(Question)
